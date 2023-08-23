@@ -26,3 +26,7 @@ for Population, Health and Data Science (IMPRS-PHDS):
     - https://www.imprs-phds.mpg.de/
 - World population:
     - https://en.wikipedia.org/wiki/World_population
+---
+## Contact:
+- Y.khorrami@gmail.com
+- https://github.com/ykhorrami/Population-DataScience
