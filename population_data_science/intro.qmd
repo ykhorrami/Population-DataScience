@@ -1,9 +1,0 @@
-# **Chapter 1: Introduction to Population Data Science**
-
-- What is Population Data Science?
-
-- Importance and Applications
-
-- Role of Python in Population Data Science
-
-- Setting up Your Python Environment for Data Analysis
