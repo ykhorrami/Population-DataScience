@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "intro.html#background",
+    "href": "intro.html#background",
+    "title": "1  Introduction to Python for Data Science",
+    "section": "1.1 Background",
+    "text": "1.1 Background\nIn this section, we delve into the basics of Python for Data Science. Python is a simple yet powerful programming language that has utility in web development, scientific computing, data science and machine learning. For a start, there are two versions of Python; Python version 2 and Python version 3. In this course, we work exclusively with Python version 3. Moreover, our interest in this section is the use of Python for data analysis. Let us first install Python."
+  },
+  {
+    "objectID": "intro.html#installing-python",
+    "href": "intro.html#installing-python",
+    "title": "1  Introduction to Python for Data Science",
+    "section": "1.2 Installing Python",
+    "text": "1.2 Installing Python\nThe installation of Python will differ slightly depending on the operating system; Windows, Mac, and Linux. The site https://www.python.org/downloads/ contains the Python executables for each operating system. ASt the time of writing this book, the Python version release is Python 3.11.5. However, installation procedures do not change much. The internet is full of tutorials on the installation of Python. In this book, we refer the reader to the available installation guidelines.\n\n1.2.1 Installing Python on Windows\nMicrosoft has a comprehensive set of installation procedures for installing Python on Windows available on this website https://learn.microsoft.com/en-us/windows/python/beginners. Microsoft recommends the installation of Python from the Microsoft Store. We also recommend this approach because it will save you from the complications of setting the Python path. The link also contains information about the installation of VS Code, a popular text editor for writing Python code. We recommend that you also install VS Code.\nIf you choose to download and install Python directly from the Python Website, ensure that you set the path correctly. Specifically, when installing Python, ensure that you tick the choice Add Python to Path in the installation dialogue box (See Figure 1.1).\n\n\n\n“Add Python to Path”\n\n\n\n\n1.2.2 Installing Python on Mac OS\nWe refer the reader to the following website https://www.makeuseof.com/how-to-install-python-on-mac/ for instructions on installing Python on Mac OS. We spewcifically point you to the section titled “How to Install Python With the Official Installer” as it offers a simpler and direct way to install Python on Mac OS. We also recomend that the readers install VS Code by following instructions on this site https://code.visualstudio.com/docs/setup/mac.\n\n\n1.2.3 Installing Python on Linux\nMost linux distributions come with linux pre-installed. For instance, Ubuntu comes with the latest Linux 3 release installed. To check the version of Python on Linux, open the terminal and run the following command.\npython3 --version\nTo install VS Code, follow the instructions on this link https://code.visualstudio.com/docs/setup/linux."
+  },
+  {
+    "objectID": "intro.html#popular-python-text-editors-and-interactive-development-environments-ides.",
+    "href": "intro.html#popular-python-text-editors-and-interactive-development-environments-ides.",
+    "title": "1  Introduction to Python for Data Science",
+    "section": "1.3 Popular Python Text Editors and Interactive Development Environments (IDEs).",
+    "text": "1.3 Popular Python Text Editors and Interactive Development Environments (IDEs).\nThere are numerous popular IDEs and text editors for use with Python. The most popular IDE is pycharm. Pycharm comes in two flavors, the professional edition and the community edition. The community edition has reduced functionality compared to the professional edition.\nThe most popular text editor for Python is VS Code. VS Code is free to download and use. This is our editor of choice iin this book. Our choice of VS Code is out of our personal preference. You can follow the contents of this book while using other platforms like Sublime text, Jupyter notebooks, among others.\n\n1.3.1 Setting up VS Code for Python Programming\nVS Code is a text editor. To make VS Code work with Python (and other programming languages), we need to install appropriate VS Code extensions. In our case, we install the following VS Code extensions.\n\nPython.\nJupyter\nCode Runner.\nQuarto\nPrettier.\n\nLet us illustrate how to install the Python extension.\n\nFirst, open the Extensions view (Ctrl+Shift+X).\nFilter the extension list by typing ‘python’.\nClick on the Python extension (Verify that it the extensions is created by Microsoft).\nFinally, Install the extension (See Figure 2 and 3 below).\n\n\n\n\n“Open the extensions panel”\n\n\n\n\n\n“Open the extensions panel”\n\n\nYou can follow the same procedure to install the other extensions."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Population Data Science with Python",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+  }
+]

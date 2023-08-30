@@ -1,0 +1,55 @@
+project:
+  type: book
+
+book:
+  title: "**Population Data Science with Python**"
+  author:
+  - name: Yaser Khorrami
+    orcid: 0000-0002-8204-7034
+    email: y.khorrami@gmail.com
+    affiliations:
+      - name: Karatina University, School of Business
+        address: P.O. Box 1957-00100
+        city: Karatina
+        state: Kenya
+        postal-code: 10101
+      - name: Graduate School of Business Administration, University of the Witwatersrand
+        address: 2nd St Davids Pl & St Andrew Rd, Parktown
+        city: Johannesburg
+        state: South Africa
+        postal-code: 2193
+  - name: John Karuitha
+    orcid: 0000-0002-8204-7034
+    email: jkaruitha@karu.ac.ke
+    affiliations:
+      - name: Karatina University, School of Business
+        address: P.O. Box 1957-00100
+        city: Karatina
+        state: Kenya
+        postal-code: 10101
+      - name: Graduate School of Business Administration, University of the Witwatersrand
+        address: 2nd St Davids Pl & St Andrew Rd, Parktown
+        city: Johannesburg
+        state: South Africa
+        postal-code: 2193
+
+  date: today
+  date-format: long
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    cover-image: cover.png
+  pdf:
+    documentclass: scrreprt
+    cover-image: cover.png
+
+
+

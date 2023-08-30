@@ -1,0 +1,30 @@
+# **Introduction to Python for Data Science**
+
+## Background
+
+In this section, we delve into the basics of Python for Data Science. Python is a simple yet powerful programming language that has utility in web development, scientific computing, data science and machine learning. Our interest in this section is the use of Python for data analysis.
+
+## Installing Python
+
+The installation of Python will differ slightly depending on the operating system; Windows, Mac, and Linux. The [site](https://www.python.org/downloads/) <https://www.python.org/downloads/> contains the Python executables for each operating system. ASt the time of writing this book, the Python version available for download is Python version 3.11.5. However, installation procedures do not change much. 
+
+### Installing Python on Windows
+
+
+### Installing Python on Linux
+
+
+
+### Installing Python on Mac OS
+
+
+
+
+
+
+
+
+
+
+
+

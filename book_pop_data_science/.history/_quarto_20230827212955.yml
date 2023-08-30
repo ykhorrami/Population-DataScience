@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "**Population Data Science with Python**"
+  author: "Norah Jones"
+  date: today
+  date-format: long
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    cover-image: cover.png
+  pdf:
+    documentclass: scrreprt
+    cover-image: cover.png
+
+
+

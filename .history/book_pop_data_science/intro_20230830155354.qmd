@@ -1,0 +1,41 @@
+# **Introduction to Python for Data Science**
+
+## Background
+
+In this section, we delve into the basics of Python for Data Science. Python is a simple yet powerful programming language that has utility in web development, scientific computing, data science and machine learning. For a start, there are two versions of Python; Python version 2 and Python version 3. In this course, we work exclusively with Python version 3. Moreover, our interest in this section is the use of Python for data analysis.
+
+## Installing Python
+
+The installation of Python will differ slightly depending on the operating system; Windows, Mac, and Linux. The [site](https://www.python.org/downloads/) <https://www.python.org/downloads/> contains the Python executables for each operating system. ASt the time of writing this book, the Python version release is Python 3.11.5. However, installation procedures do not change much. The internet is full of tutorials on the installation of Python. In this book, we refer the reader to the available installation guidelines. 
+
+### Installing Python on Windows
+
+Microsoft has a comprehensive set of installation procedures for installing Python on Windows available on this [website](https://learn.microsoft.com/en-us/windows/python/beginners) <https://learn.microsoft.com/en-us/windows/python/beginners>. Microsoft recommends the installation of Python from the Microsoft Store. We also recommend this approach because it will save you from the complications of setting the Python path. The link also contains information about the installation of VS Code, a popular text editor for writing Python code. We recommend that you also install VS Code.
+
+If you choose to download and install Python directly from the Python Website, ensure that you set the path correctly. Specifically, when installing Python, ensure that you tick the choice `Add Python to Path` in the installation dialogue box (See Figure 1.1). 
+
+!["Add Python to Path"]("images/path.jpeg")
+
+
+### Installing Python on Mac OS
+
+We refer the reader to the following [website](https://www.makeuseof.com/how-to-install-python-on-mac/) <https://www.makeuseof.com/how-to-install-python-on-mac/> for instructions on installing Python on Mac OS. We spewcifically point you to the section titled "How to Install Python With the Official Installer" as it offers a simpler and direct way to install Python on Mac OS.
+
+
+
+### Installing Python on Linux
+
+
+## Popular Python Text Editors and Interactive Development Environments (IDEs).
+
+
+
+
+
+
+
+
+
+
+
+
