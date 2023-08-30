@@ -14,7 +14,7 @@ Microsoft has a comprehensive set of installation procedures for installing Pyth
 
 If you choose to download and install Python directly from the Python Website, ensure that you set the path correctly. Specifically, when installing Python, ensure that you tick the choice `Add Python to Path` in the installation dialogue box (See Figure 1.1). 
 
-!["Add Python to Path"]("images/path.jpeg")
+![Add Python to Path](images/path.jpeg)
 
 
 ### Installing Python on Mac OS
@@ -37,7 +37,7 @@ There are numerous popular IDEs and text editors for use with Python. The most p
 
 The most popular text editor for Python is `VS Code`. VS Code is free to download and use. This is our editor of choice iin this book. Our choice of VS Code is out of our personal preference. You can follow the contents of this book while using other platforms like Sublime text, Jupyter notebooks, among others. 
 
-### Setting up VS Code for Python Programming
+## Setting up VS Code for Python Programming
 
 VS Code is a text editor. To make VS Code work with Python (and other programming languages), we need to install appropriate VS Code extensions. In our case, we install the following VS Code extensions.
 
@@ -54,12 +54,72 @@ Let us illustrate how to install the Python extension.
 - Click on the Python extension (Verify that it the extensions is created by Microsoft).
 - Finally, Install the extension  (See Figure 2 and 3 below).
 
-!["Open the extensions panel"]("images/vs_ext.jpeg")
+![Open the extensions panel](images/vs_ext.jpeg)
 
 
-!["Open the extensions panel"]("images/vs_ext_install.jpeg")
+![Install the Python extension](images/vs_ext_install.jpeg)
 
 You can follow the same procedure to install the other extensions. 
+
+## Installing Python Packages
+
+
+## Loading Data into Python
+
+We shall work with data from the United Nations Population Department (UNPD) to illustrate data analysis in Python. The data consists of population and life expectancy estimates and is available in the following [website](https://population.un.org/wpp/Download/Standard/MostUsed/): <https://population.un.org/wpp/Download/Standard/MostUsed/>.
+
+The first step in analyzing data in Python is to load the standard libraries: pandas for importing files, matplotlib and seaborn for data visualization, and numpy for mathematical operations. When importing the libraries, it is common, though not neccesary to alias the packages (like pd for pandas and plt for matplotlib.pyplot). This convention makes it easy to reference the libraries when writing code. Not that you could use any other alias. However, in the Python community, pandas is usually aliased as pd. The same is the case for the other libraries. 
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+```
+
+We start by importing the data using pandas. Pandas has many handy functions for importing data in variuous formats. Given that our data is in Ms Excel format, we use the `pd.read_excel()` function to import the data.
+
+The `pd.read_excel()` [webpage](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) details the numerous arguments that we could supply to the function. To keep things simple, we will just supply the file path. The data is in the first sheet of the excel workbook and has column names as the first row. Hence, we stick with the default arguments; sheet_name=0, and header=0. Note that we could also supply a list of alterantive column names to the `names` parameter. For now, we leave the names parameter to the default of none. 
+
+```{python}
+population = pd.read_excel("data/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx")
+```
+
+
+## Exploring Data in Python
+
+The `head` method allows us to view the first 5 rows of the data table by default. In the example below, we specify that we want to display the first 3 rows instead.
+
+```{python}
+population.head(3)
+```
+
+We can do the same using the `tail` method to view the last few rows of the data table.
+
+```{python}
+population.tail()
+```
+
+Let us look at the number of rows and columns of the data by calling the `shape` attribute.
+
+```{python}
+population.shape
+```
+
+The `info()` method allows us to have an overview of the data incluyding the column names and data types. 
+
+```{python}
+population.info()
+```
+
+
+```{python}
+population.describe(include="float64")
+```
+
+```{python}
+population.describe(include="object")
+```
 
 
 

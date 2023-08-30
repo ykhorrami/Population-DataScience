@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -61,6 +95,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -140,10 +177,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#installing-python-on-mac-os" id="toc-installing-python-on-mac-os" class="nav-link" data-scroll-target="#installing-python-on-mac-os"><span class="header-section-number">1.2.2</span> Installing Python on Mac OS</a></li>
   <li><a href="#installing-python-on-linux" id="toc-installing-python-on-linux" class="nav-link" data-scroll-target="#installing-python-on-linux"><span class="header-section-number">1.2.3</span> Installing Python on Linux</a></li>
   </ul></li>
-  <li><a href="#popular-python-text-editors-and-interactive-development-environments-ides." id="toc-popular-python-text-editors-and-interactive-development-environments-ides." class="nav-link" data-scroll-target="#popular-python-text-editors-and-interactive-development-environments-ides."><span class="header-section-number">1.3</span> Popular Python Text Editors and Interactive Development Environments (IDEs).</a>
-  <ul class="collapse">
-  <li><a href="#setting-up-vs-code-for-python-programming" id="toc-setting-up-vs-code-for-python-programming" class="nav-link" data-scroll-target="#setting-up-vs-code-for-python-programming"><span class="header-section-number">1.3.1</span> Setting up VS Code for Python Programming</a></li>
-  </ul></li>
+  <li><a href="#popular-python-text-editors-and-interactive-development-environments-ides." id="toc-popular-python-text-editors-and-interactive-development-environments-ides." class="nav-link" data-scroll-target="#popular-python-text-editors-and-interactive-development-environments-ides."><span class="header-section-number">1.3</span> Popular Python Text Editors and Interactive Development Environments (IDEs).</a></li>
+  <li><a href="#setting-up-vs-code-for-python-programming" id="toc-setting-up-vs-code-for-python-programming" class="nav-link" data-scroll-target="#setting-up-vs-code-for-python-programming"><span class="header-section-number">1.4</span> Setting up VS Code for Python Programming</a></li>
+  <li><a href="#installing-python-packages" id="toc-installing-python-packages" class="nav-link" data-scroll-target="#installing-python-packages"><span class="header-section-number">1.5</span> Installing Python Packages</a></li>
+  <li><a href="#loading-data-into-python" id="toc-loading-data-into-python" class="nav-link" data-scroll-target="#loading-data-into-python"><span class="header-section-number">1.6</span> Loading Data into Python</a></li>
+  <li><a href="#exploring-data-in-python" id="toc-exploring-data-in-python" class="nav-link" data-scroll-target="#exploring-data-in-python"><span class="header-section-number">1.7</span> Exploring Data in Python</a></li>
   </ul>
 </nav>
     </div>
@@ -180,8 +218,8 @@ ul.task-list li input[type="checkbox"] {
 <p>If you choose to download and install Python directly from the Python Website, ensure that you set the path correctly. Specifically, when installing Python, ensure that you tick the choice <code>Add Python to Path</code> in the installation dialogue box (See Figure 1.1).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="&quot;images/path.jpeg&quot;" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">“Add Python to Path”</figcaption>
+<p><img src="images/path.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Add Python to Path</figcaption>
 </figure>
 </div>
 </section>
@@ -200,8 +238,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="1.3" class="anchored" data-anchor-id="popular-python-text-editors-and-interactive-development-environments-ides."><span class="header-section-number">1.3</span> Popular Python Text Editors and Interactive Development Environments (IDEs).</h2>
 <p>There are numerous popular IDEs and text editors for use with Python. The most popular IDE is <code>pycharm</code>. Pycharm comes in two flavors, the professional edition and the community edition. The community edition has reduced functionality compared to the professional edition.</p>
 <p>The most popular text editor for Python is <code>VS Code</code>. VS Code is free to download and use. This is our editor of choice iin this book. Our choice of VS Code is out of our personal preference. You can follow the contents of this book while using other platforms like Sublime text, Jupyter notebooks, among others.</p>
-<section id="setting-up-vs-code-for-python-programming" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="setting-up-vs-code-for-python-programming"><span class="header-section-number">1.3.1</span> Setting up VS Code for Python Programming</h3>
+</section>
+<section id="setting-up-vs-code-for-python-programming" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="setting-up-vs-code-for-python-programming"><span class="header-section-number">1.4</span> Setting up VS Code for Python Programming</h2>
 <p>VS Code is a text editor. To make VS Code work with Python (and other programming languages), we need to install appropriate VS Code extensions. In our case, we install the following VS Code extensions.</p>
 <ul>
 <li>Python.</li>
@@ -219,20 +258,600 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="&quot;images/vs_ext.jpeg&quot;" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">“Open the extensions panel”</figcaption>
+<p><img src="images/vs_ext.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Open the extensions panel</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="&quot;images/vs_ext_install.jpeg&quot;" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">“Open the extensions panel”</figcaption>
+<p><img src="images/vs_ext_install.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Install the Python extension</figcaption>
 </figure>
 </div>
 <p>You can follow the same procedure to install the other extensions.</p>
-
-
 </section>
+<section id="installing-python-packages" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="installing-python-packages"><span class="header-section-number">1.5</span> Installing Python Packages</h2>
+</section>
+<section id="loading-data-into-python" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="loading-data-into-python"><span class="header-section-number">1.6</span> Loading Data into Python</h2>
+<p>We shall work with data from the United Nations Population Department (UNPD) to illustrate data analysis in Python. The data consists of population and life expectancy estimates and is available in the following <a href="https://population.un.org/wpp/Download/Standard/MostUsed/">website</a>: <a href="https://population.un.org/wpp/Download/Standard/MostUsed/" class="uri">https://population.un.org/wpp/Download/Standard/MostUsed/</a>.</p>
+<p>The first step in analyzing data in Python is to load the standard libraries: pandas for importing files, matplotlib and seaborn for data visualization, and numpy for mathematical operations. When importing the libraries, it is common, though not neccesary to alias the packages (like pd for pandas and plt for matplotlib.pyplot). This convention makes it easy to reference the libraries when writing code. Not that you could use any other alias. However, in the Python community, pandas is usually aliased as pd. The same is the case for the other libraries.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We start by importing the data using pandas. Pandas has many handy functions for importing data in variuous formats. Given that our data is in Ms Excel format, we use the <code>pd.read_excel()</code> function to import the data.</p>
+<p>The <code>pd.read_excel()</code> <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">webpage</a> details the numerous arguments that we could supply to the function. To keep things simple, we will just supply the file path. The data is in the first sheet of the excel workbook and has column names as the first row. Hence, we stick with the default arguments; sheet_name=0, and header=0. Note that we could also supply a list of alterantive column names to the <code>names</code> parameter. For now, we leave the names parameter to the default of none.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.read_excel(<span class="st">"data/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exploring-data-in-python" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="exploring-data-in-python"><span class="header-section-number">1.7</span> Exploring Data in Python</h2>
+<p>The <code>head</code> method allows us to view the first 5 rows of the data table by default. In the example below, we specify that we want to display the first 3 rows instead.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>population.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">index</th>
+<th data-quarto-table-cell-role="th">variant</th>
+<th data-quarto-table-cell-role="th">region_subregion_country_area</th>
+<th data-quarto-table-cell-role="th">notes</th>
+<th data-quarto-table-cell-role="th">location_code</th>
+<th data-quarto-table-cell-role="th">ISO3_code</th>
+<th data-quarto-table-cell-role="th">ISO2_code</th>
+<th data-quarto-table-cell-role="th">SDMX_code</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">parent_code</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">male_mortality_before_age_60_deaths_per_1000_male_births</th>
+<th data-quarto-table-cell-role="th">female_mortality_before_age_60_deaths_per_1000_female_births</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_50_both_sexes_deaths_under50_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_50_deaths_under50_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_50_deaths_under50_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_60_both_sexes_deaths_under60_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_60_deaths_under60_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_60_deaths_under60_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">net_migrants_000</th>
+<th data-quarto-table-cell-role="th">net_migration_per_1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>Estimates</td>
+<td>WORLD</td>
+<td>NaN</td>
+<td>900</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.0</td>
+<td>World</td>
+<td>0</td>
+<td>...</td>
+<td>580.75</td>
+<td>498.04</td>
+<td>240.316</td>
+<td>271.625</td>
+<td>208.192</td>
+<td>378.697</td>
+<td>430.259</td>
+<td>324.931</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Estimates</td>
+<td>WORLD</td>
+<td>NaN</td>
+<td>900</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.0</td>
+<td>World</td>
+<td>0</td>
+<td>...</td>
+<td>566.728</td>
+<td>490.199</td>
+<td>231.177</td>
+<td>258.09</td>
+<td>203.78</td>
+<td>368.319</td>
+<td>415.836</td>
+<td>319.336</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Estimates</td>
+<td>WORLD</td>
+<td>NaN</td>
+<td>900</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.0</td>
+<td>World</td>
+<td>0</td>
+<td>...</td>
+<td>546.317</td>
+<td>477.264</td>
+<td>218.674</td>
+<td>240.034</td>
+<td>197.142</td>
+<td>353.055</td>
+<td>395.533</td>
+<td>309.91</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>3 rows × 65 columns</p>
+</div>
+</div>
+</div>
+<p>We can do the same using the <code>tail</code> method to view the last few rows of the data table.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">index</th>
+<th data-quarto-table-cell-role="th">variant</th>
+<th data-quarto-table-cell-role="th">region_subregion_country_area</th>
+<th data-quarto-table-cell-role="th">notes</th>
+<th data-quarto-table-cell-role="th">location_code</th>
+<th data-quarto-table-cell-role="th">ISO3_code</th>
+<th data-quarto-table-cell-role="th">ISO2_code</th>
+<th data-quarto-table-cell-role="th">SDMX_code</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">parent_code</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">male_mortality_before_age_60_deaths_per_1000_male_births</th>
+<th data-quarto-table-cell-role="th">female_mortality_before_age_60_deaths_per_1000_female_births</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_50_both_sexes_deaths_under50_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_50_deaths_under50_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_50_deaths_under50_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_60_both_sexes_deaths_under60_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_60_deaths_under60_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_60_deaths_under60_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">net_migrants_000</th>
+<th data-quarto-table-cell-role="th">net_migration_per_1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20591</td>
+<td>20592</td>
+<td>Estimates</td>
+<td>Wallis and Futuna Islands</td>
+<td>2</td>
+<td>876</td>
+<td>WLF</td>
+<td>WF</td>
+<td>876.0</td>
+<td>Country/Area</td>
+<td>957</td>
+<td>...</td>
+<td>92.066</td>
+<td>102.718</td>
+<td>30.643</td>
+<td>26.781</td>
+<td>33.892</td>
+<td>82.852</td>
+<td>82.197</td>
+<td>83.32</td>
+<td>-0.201</td>
+<td>-16.706</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20592</td>
+<td>20593</td>
+<td>Estimates</td>
+<td>Wallis and Futuna Islands</td>
+<td>2</td>
+<td>876</td>
+<td>WLF</td>
+<td>WF</td>
+<td>876.0</td>
+<td>Country/Area</td>
+<td>957</td>
+<td>...</td>
+<td>99.196</td>
+<td>89.345</td>
+<td>29.201</td>
+<td>29.159</td>
+<td>29.17</td>
+<td>79.633</td>
+<td>88.556</td>
+<td>72.163</td>
+<td>-0.171</td>
+<td>-14.368</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20593</td>
+<td>20594</td>
+<td>Estimates</td>
+<td>Wallis and Futuna Islands</td>
+<td>2</td>
+<td>876</td>
+<td>WLF</td>
+<td>WF</td>
+<td>876.0</td>
+<td>Country/Area</td>
+<td>957</td>
+<td>...</td>
+<td>77.781</td>
+<td>80.136</td>
+<td>24.304</td>
+<td>22.291</td>
+<td>25.981</td>
+<td>66.639</td>
+<td>69.324</td>
+<td>64.496</td>
+<td>-0.171</td>
+<td>-14.489</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20594</td>
+<td>20595</td>
+<td>Estimates</td>
+<td>Wallis and Futuna Islands</td>
+<td>2</td>
+<td>876</td>
+<td>WLF</td>
+<td>WF</td>
+<td>876.0</td>
+<td>Country/Area</td>
+<td>957</td>
+<td>...</td>
+<td>85.608</td>
+<td>86.364</td>
+<td>26.572</td>
+<td>24.691</td>
+<td>28.127</td>
+<td>72.73</td>
+<td>76.411</td>
+<td>69.685</td>
+<td>-0.083</td>
+<td>-7.096</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20595</td>
+<td>20596</td>
+<td>Estimates</td>
+<td>Wallis and Futuna Islands</td>
+<td>2</td>
+<td>876</td>
+<td>WLF</td>
+<td>WF</td>
+<td>876.0</td>
+<td>Country/Area</td>
+<td>957</td>
+<td>...</td>
+<td>89.321</td>
+<td>84.68</td>
+<td>25.848</td>
+<td>24.836</td>
+<td>26.644</td>
+<td>74.207</td>
+<td>80.373</td>
+<td>68.905</td>
+<td>-0.083</td>
+<td>-7.112</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 65 columns</p>
+</div>
+</div>
+</div>
+<p>Let us look at the number of rows and columns of the data by calling the <code>shape</code> attribute.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>(20596, 65)</code></pre>
+</div>
+</div>
+<p>The <code>info()</code> method allows us to have an overview of the data incluyding the column names and data types.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 20596 entries, 0 to 20595
+Data columns (total 65 columns):
+ #   Column                                                                 Non-Null Count  Dtype  
+---  ------                                                                 --------------  -----  
+ 0   index                                                                  20596 non-null  int64  
+ 1   variant                                                                20596 non-null  object 
+ 2   region_subregion_country_area                                          20596 non-null  object 
+ 3   notes                                                                  5475 non-null   object 
+ 4   location_code                                                          20596 non-null  int64  
+ 5   ISO3_code                                                              17064 non-null  object 
+ 6   ISO2_code                                                              16992 non-null  object 
+ 7   SDMX_code                                                              20304 non-null  float64
+ 8   type                                                                   20596 non-null  object 
+ 9   parent_code                                                            20596 non-null  int64  
+ 10  year                                                                   20592 non-null  float64
+ 11  total_pop_jan1_000                                                     20596 non-null  object 
+ 12  total_pop_july1_000                                                    20596 non-null  object 
+ 13  male_pop_july1_000                                                     20596 non-null  object 
+ 14  female_pop_july1_000                                                   20596 non-null  object 
+ 15  pop_density_july1_sqkm                                                 20596 non-null  object 
+ 16  pop_sex_ratio_july_males_per_100_females                               20596 non-null  object 
+ 17  median_age_july1_years                                                 20596 non-null  object 
+ 18  natural_change_births_minus_deaths_000                                 20596 non-null  object 
+ 19  natural_change_births_minus_deaths_per_000                             20596 non-null  object 
+ 20  pop_change_000                                                         20596 non-null  object 
+ 21  pop_growth_rate _percentage                                            20596 non-null  object 
+ 22  Pop_annual_doubling_years                                              20596 non-null  object 
+ 23  Births_000                                                             20596 non-null  object 
+ 24  births_women_15_19_000                                                 20596 non-null  object 
+ 25  crude_birth_rate_per_000                                               20596 non-null  object 
+ 26  total_fertility_rate_live_births_per_woman                             20596 non-null  object 
+ 27  net_reproduction_rate_surviving_daughters_per_woman                    20596 non-null  object 
+ 28  mean_age_childbearing_years                                            20596 non-null  object 
+ 29  sex_ratio_at_birth_males_per_100_female_births                         20596 non-null  object 
+ 30  total_deaths_thousands                                                 20596 non-null  object 
+ 31  male_deaths_thousands                                                  20596 non-null  object 
+ 32  female_deaths_thousands                                                20596 non-null  object 
+ 33  crude_death_rate_deaths_per_1000_population                            20596 non-null  object 
+ 34  life_expectancy_at_birth_both_sexes                                    20596 non-null  object 
+ 35  male_life_expectancy_at_birth                                          20596 non-null  object 
+ 36  female_life_expectancy_at_birth                                        20596 non-null  object 
+ 37  life_expectancy_at_15_both_sexes                                       20596 non-null  object 
+ 38  male_life_expectancy_at_15                                             20596 non-null  object 
+ 39  female_life_expectancy_at_15                                           20596 non-null  object 
+ 40  life_expectancy_at_65_both_sexes                                       20596 non-null  object 
+ 41  male_life_expectancy_at_65                                             20596 non-null  object 
+ 42  female_life_expectancy_at_65                                           20596 non-null  object 
+ 43  life_expectancy_at_80_both_sexes                                       20596 non-null  object 
+ 44  male_life_expectancy_at_80                                             20596 non-null  object 
+ 45  female_life_expectancy_at_80                                           20596 non-null  object 
+ 46  infant_deaths_under_age_1_thousands                                    20596 non-null  object 
+ 47  infant_mortality_rate_infant_deaths_per_1000_live_births               20596 non-null  object 
+ 48  live_birth_surviving_to_age1 _thousands                                20596 non-null  object 
+ 49  under_five_deaths_under_age5_thousands                                 20596 non-null  object 
+ 50  under_five_mortality_deaths_under_age5_per_1000_live_births            20596 non-null  object 
+ 51  mortality_before_age_40_both_sexes_deaths_per_1000_live_births         20596 non-null  object 
+ 52  male_mortality_before_age_40_deaths_per_1000_male_births               20596 non-null  object 
+ 53  female_mortality_before_age_40_deaths_per_1000_female_births           20596 non-null  object 
+ 54  mortality_before_age_60_both_sexes_deaths_per_1000_live_births         20596 non-null  object 
+ 55  male_mortality_before_age_60_deaths_per_1000_male_births               20596 non-null  object 
+ 56  female_mortality_before_age_60_deaths_per_1000_female_births           20596 non-null  object 
+ 57  mortality_age_15_50_both_sexes_deaths_under50_per_1000_alive_at_15     20596 non-null  object 
+ 58  male_mortality_age_15_50_deaths_under50_per_1000_male_alive_at_15      20596 non-null  object 
+ 59  female_mortality_age_15_50_deaths_under50_per_1000_female_alive_at_15  20596 non-null  object 
+ 60  mortality_age_15_60_both_sexes_deaths_under60_per_1000_alive_at_15     20596 non-null  object 
+ 61  male_mortality_age_15_60_deaths_under60_per_1000_male_alive_at_15      20596 non-null  object 
+ 62  female_mortality_age_15_60_deaths_under60_per_1000_female_alive_at_15  20596 non-null  object 
+ 63  net_migrants_000                                                       20596 non-null  object 
+ 64  net_migration_per_1000                                                 20596 non-null  object 
+dtypes: float64(2), int64(3), object(60)
+memory usage: 10.2+ MB</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>population.describe(include<span class="op">=</span><span class="st">"float64"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SDMX_code</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>20304.000000</td>
+<td>20592.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>410.088652</td>
+<td>1985.50000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>268.841860</td>
+<td>20.78311</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1.000000</td>
+<td>1950.00000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>158.000000</td>
+<td>1967.75000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>415.500000</td>
+<td>1985.50000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>643.000000</td>
+<td>2003.25000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>914.000000</td>
+<td>2021.00000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>population.describe(include<span class="op">=</span><span class="st">"object"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">variant</th>
+<th data-quarto-table-cell-role="th">region_subregion_country_area</th>
+<th data-quarto-table-cell-role="th">notes</th>
+<th data-quarto-table-cell-role="th">ISO3_code</th>
+<th data-quarto-table-cell-role="th">ISO2_code</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">total_pop_jan1_000</th>
+<th data-quarto-table-cell-role="th">total_pop_july1_000</th>
+<th data-quarto-table-cell-role="th">male_pop_july1_000</th>
+<th data-quarto-table-cell-role="th">female_pop_july1_000</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">male_mortality_before_age_60_deaths_per_1000_male_births</th>
+<th data-quarto-table-cell-role="th">female_mortality_before_age_60_deaths_per_1000_female_births</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_50_both_sexes_deaths_under50_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_50_deaths_under50_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_50_deaths_under50_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">mortality_age_15_60_both_sexes_deaths_under60_per_1000_alive_at_15</th>
+<th data-quarto-table-cell-role="th">male_mortality_age_15_60_deaths_under60_per_1000_male_alive_at_15</th>
+<th data-quarto-table-cell-role="th">female_mortality_age_15_60_deaths_under60_per_1000_female_alive_at_15</th>
+<th data-quarto-table-cell-role="th">net_migrants_000</th>
+<th data-quarto-table-cell-role="th">net_migration_per_1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>20596</td>
+<td>20596</td>
+<td>5475</td>
+<td>17064</td>
+<td>16992</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>...</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+<td>20596</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">unique</td>
+<td>1</td>
+<td>289</td>
+<td>46</td>
+<td>237</td>
+<td>236</td>
+<td>9</td>
+<td>20337</td>
+<td>20340</td>
+<td>20156</td>
+<td>20152</td>
+<td>...</td>
+<td>19966</td>
+<td>19893</td>
+<td>19575</td>
+<td>19530</td>
+<td>19191</td>
+<td>19848</td>
+<td>19825</td>
+<td>19682</td>
+<td>15838</td>
+<td>12811</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">top</td>
+<td>Estimates</td>
+<td>Australia/New Zealand</td>
+<td>2</td>
+<td>BDI</td>
+<td>BI</td>
+<td>Country/Area</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">freq</td>
+<td>20596</td>
+<td>144</td>
+<td>792</td>
+<td>72</td>
+<td>72</td>
+<td>17064</td>
+<td>4</td>
+<td>4</td>
+<td>76</td>
+<td>76</td>
+<td>...</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>76</td>
+<td>578</td>
+<td>578</td>
+</tr>
+</tbody>
+</table>
+
+<p>4 rows × 60 columns</p>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
