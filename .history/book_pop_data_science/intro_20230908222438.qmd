@@ -1,0 +1,157 @@
+# **Introduction to Python for Data Science**
+
+## Background
+
+In this section, we delve into the basics of Python for Data Science. Python is a simple yet powerful programming language that has utility in web development, scientific computing, data science and machine learning. For a start, there are two versions of Python; Python version 2 and Python version 3. In this course, we work exclusively with Python version 3. Moreover, our interest in this section is the use of Python for data analysis. Let us first install Python.
+
+## Installing Python
+
+The installation of Python will differ slightly depending on the operating system; Windows, Mac, and Linux. The [site](https://www.python.org/downloads/) <https://www.python.org/downloads/> contains the Python executables for each operating system. ASt the time of writing this book, the Python version release is Python 3.11.5. However, installation procedures do not change much. The internet is full of tutorials on the installation of Python. In this book, we refer the reader to the available installation guidelines. 
+
+### Installing Python on Windows
+
+Microsoft has a comprehensive set of installation procedures for installing Python on Windows available on this [website](https://learn.microsoft.com/en-us/windows/python/beginners) <https://learn.microsoft.com/en-us/windows/python/beginners>. Microsoft recommends the installation of Python from the Microsoft Store. We also recommend this approach because it will save you from the complications of setting the Python path. The link also contains information about the installation of VS Code, a popular text editor for writing Python code. We recommend that you also install VS Code.
+
+If you choose to download and install Python directly from the Python Website, ensure that you set the path correctly. Specifically, when installing Python, ensure that you tick the choice `Add Python to Path` in the installation dialogue box (See Figure 1.1). 
+
+![Add Python to Path](images/path.jpeg)
+
+
+### Installing Python on Mac OS
+
+We refer the reader to the following [website](https://www.makeuseof.com/how-to-install-python-on-mac/) <https://www.makeuseof.com/how-to-install-python-on-mac/> for instructions on installing Python on Mac OS. We spewcifically point you to the section titled "How to Install Python With the Official Installer" as it offers a simpler and direct way to install Python on Mac OS. We also recomend that the readers install VS Code by following instructions on this [site](https://code.visualstudio.com/docs/setup/mac) <https://code.visualstudio.com/docs/setup/mac>. 
+
+### Installing Python on Linux
+
+Most linux distributions come with linux pre-installed. For instance, Ubuntu comes with the latest Linux 3 release installed. To check the version of Python on Linux, open the terminal and run the following command. 
+
+```
+python3 --version
+```
+
+To install VS Code, follow the instructions on this [link](https://code.visualstudio.com/docs/setup/linux) <https://code.visualstudio.com/docs/setup/linux>. 
+
+## Popular Python Text Editors and Interactive Development Environments (IDEs).
+
+There are numerous popular IDEs and text editors for use with Python. The most popular IDE is `pycharm`. Pycharm comes in two flavors, the professional edition and the community edition. The community edition has reduced functionality compared to the professional edition. 
+
+The most popular text editor for Python is `VS Code`. VS Code is free to download and use. This is our editor of choice iin this book. Our choice of VS Code is out of our personal preference. You can follow the contents of this book while using other platforms like Sublime text, Jupyter notebooks, among others. 
+
+## Setting up VS Code for Python Programming
+
+VS Code is a text editor. To make VS Code work with Python (and other programming languages), we need to install appropriate VS Code extensions. In our case, we install the following VS Code extensions.
+
+- Python.
+- Jupyter
+- Code Runner.
+- Quarto
+- Prettier.
+
+Let us illustrate how to install the Python extension. 
+
+- First, open the Extensions view (Ctrl+Shift+X).
+- Filter the extension list by typing 'python'.
+- Click on the Python extension (Verify that it the extensions is created by Microsoft).
+- Finally, Install the extension  (See Figure 2 and 3 below).
+
+![Open the extensions panel](images/vs_ext.jpeg)
+
+
+![Install the Python extension](images/vs_ext_install.jpeg)
+
+You can follow the same procedure to install the other extensions. 
+
+## Installing Python Packages
+
+
+## Loading Data into Python
+
+We shall work with data from the United Nations Population Department (UNPD) to illustrate data analysis in Python. The data consists of population and life expectancy estimates and is available in the following [website](https://population.un.org/wpp/Download/Standard/MostUsed/): <https://population.un.org/wpp/Download/Standard/MostUsed/>.
+
+The first step in analyzing data in Python is to load the standard libraries: pandas for importing files, matplotlib and seaborn for data visualization, and numpy for mathematical operations. When importing the libraries, it is common, though not neccesary to alias the packages (like pd for pandas and plt for matplotlib.pyplot). This convention makes it easy to reference the libraries when writing code. Not that you could use any other alias. However, in the Python community, pandas is usually aliased as pd. The same is the case for the other libraries. 
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+```
+
+We start by importing the data using pandas. Pandas has many handy functions for importing data in variuous formats. Given that our data is in Ms Excel format, we use the `pd.read_excel()` function to import the data.
+
+The `pd.read_excel()` [webpage](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) details the numerous arguments that we could supply to the function. To keep things simple, we will just supply the file path. The data is in the first sheet of the excel workbook and has column names as the first row. Hence, we stick with the default arguments; sheet_name=0, and header=0. Note that we could also supply a list of alterantive column names to the `names` parameter. For now, we leave the names parameter to the default of none. 
+
+```{python}
+population = pd.read_excel("data/unpd_pop.xlsx")
+```
+
+
+## Selecting Rows and Columns of Data
+
+Let us select a few variables of interest from the data. In Pandas, we can directly select columns using the following syntax:
+
+```
+data[["column1", "column2"]]
+```
+In the above syntax, we provide Pandas with a list of columns that we desire to pick.
+
+A popular alternative is to use the `loc` and `iloc` functions. The `loc` function selects columns by name while the `iloc` function selects by index location. The syntax above translates to the following syntax based on `loc`:
+
+```
+data[:, ["column1", "column2"]]
+```
+
+The colon (:) tells pandas that we desire all rows. We then provide a list of columns as before. For `iloc`, we would just substitute the column names with index locations (as an integer). The advantage of the `loc` and `iloc` functions is that we can filter both rows and columns. 
+
+In our case, let us filter our data so that we retain all rows and a few columns. 
+
+```{python}
+population.loc[:, ["region_subregion_country_area", "ISO3_code", "Year", "total_pop_jan1_000", "total_pop_july1_000", "male_pop_jan1_000", "female_pop_july1_000"]]
+```
+
+## Exploring Data in Python
+
+The `head` method allows us to view the first 5 rows of the data table by default. In the example below, we specify that we want to display the first 3 rows instead.
+
+```{python}
+population.head(3)
+```
+
+We can do the same using the `tail` method to view the last few rows of the data table.
+
+```{python}
+population.tail()
+```
+
+Let us look at the number of rows and columns of the data by calling the `shape` attribute.
+
+```{python}
+population.shape
+```
+
+The `info()` method allows us to have an overview of the data incluyding the column names and data types. 
+
+```{python}
+population.info()
+```
+
+
+```{python}
+population.describe(include="float64")
+```
+
+```{python}
+population.describe(include="object")
+```
+
+
+
+
+
+
+
+
+
+
+
+

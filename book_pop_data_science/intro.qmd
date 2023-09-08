@@ -82,44 +82,107 @@ We start by importing the data using pandas. Pandas has many handy functions for
 The `pd.read_excel()` [webpage](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) details the numerous arguments that we could supply to the function. To keep things simple, we will just supply the file path. The data is in the first sheet of the excel workbook and has column names as the first row. Hence, we stick with the default arguments; sheet_name=0, and header=0. Note that we could also supply a list of alterantive column names to the `names` parameter. For now, we leave the names parameter to the default of none. 
 
 ```{python}
-population = pd.read_excel("data/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx")
+population = pd.read_excel("data/unpd_pop.xlsx", na_values="...")
 ```
 
+
+## Selecting Rows and Columns of Data
+
+Let us select a few variables of interest from the data. In Pandas, we can directly select columns using the following syntax:
+
+```
+data[["column1", "column2"]]
+```
+In the above syntax, we provide Pandas with a list of columns that we desire to pick.
+
+A popular alternative is to use the `loc` and `iloc` functions. The `loc` function selects columns by name while the `iloc` function selects by index location. The syntax above translates to the following syntax based on `loc`:
+
+```
+data[:, ["column1", "column2"]]
+```
+
+The colon (:) tells pandas that we desire all rows. We then provide a list of columns as before. For `iloc`, we would just substitute the column names with index locations (as an integer). The advantage of the `loc` and `iloc` functions is that we can filter both rows and columns. For the rest of the chapter we shall stick to the `iloc` and `iloc` functions for filtering data. 
+
+In our case, let us filter our data so that we retain all rows and a few columns. 
+
+```{python}
+pop_sample = population.loc[:, ["region_subregion_country_area", "ISO3_code", "year", "total_pop_jan1_000", "total_pop_july1_000", "male_pop_july1_000", "female_pop_july1_000"]]
+```
 
 ## Exploring Data in Python
 
 The `head` method allows us to view the first 5 rows of the data table by default. In the example below, we specify that we want to display the first 3 rows instead.
 
 ```{python}
-population.head(3)
+pop_sample.head(3)
 ```
 
 We can do the same using the `tail` method to view the last few rows of the data table.
 
 ```{python}
-population.tail()
+pop_sample.tail()
 ```
 
 Let us look at the number of rows and columns of the data by calling the `shape` attribute.
 
 ```{python}
-population.shape
+pop_sample.shape
 ```
 
 The `info()` method allows us to have an overview of the data incluyding the column names and data types. 
 
 ```{python}
-population.info()
+pop_sample.info()
+```
+
+We can quicly get the summary statistics using the `desribe()` method. By default, the describe method will only compute summary statistics for numeric variables. However, we can alter this behavior by supplying additional arguments. We shall revisit this method later in the book.
+
+```{python}
+pop_sample.describe()
+```
+
+
+## Converting Data Types in Python
+
+In our data, we see that the columns that capture population values are of the `object` type. We shall convert the values to numeric. We can do this using two different techniques;
+
+- The `astype` method from Python.
+- The `pd.to_numeric` function from Pandas.
+
+Let us convert the total population values using the `astype` method.
+
+```{python}
+pop_sample[["total_pop_jan1_000", "total_pop_july1_000"]] = pop_sample[["total_pop_jan1_000", "total_pop_july1_000"]].astype("float64", errors="ignore")
+```
+
+We could have achieved the same result using the `pd.to_numeric` function from Pandas, as follows:
+
+
+```{python}
+
 ```
 
 
 ```{python}
-population.describe(include="float64")
+pop_sample.describe()
 ```
 
+
 ```{python}
-population.describe(include="object")
+pop_sample.describe(include = "object")
 ```
+
+
+
+```{python}
+pop_sample.nlargest(5, "total_pop_jan1_000")
+```
+
+
+```{python}
+pop_sample.nsmallest(5, "total_pop_jan1_000")
+```
+
 
 
 
